@@ -1,78 +1,72 @@
-/*function validarFormulario() {
-	alert("validando");
-}
 
-function limpiandoForma(){
-	alert("limpiando");
-}
+/*document.getElementById("form-signup").submit();*/
 
-window.onload = function(){
-	var botonRegistrar;
-	botonRegistrar = document.getElementsByTagName('button');
-	botonRegistrar.onclick = botonRegistrar;
-}
-
-var verificar = true;
-var expresionNombre =/^[a-zA-Z]+$/;
-var expresrionNumero = /^[0-9]+$/;
-var expresionEmail =/^([a-z]+[a-z1-9._-]*)@{1}([a-z1-9\.]{2,})\.([a-z]{2,3})$/;
-
-var formulario = document.getElementSById('sr-only');
-var nombre = document.getElementSById('name');
-var apellido = document.getElementSById('lastname');
-var correo = document.getElementSById('inputEmail');
-var contraseña = document.getElementSById('inputPassword');
-
-if(nombre.value==""){
-	alert("el campo nombre es requerido");
-	nombre.focus();
-	verificar = false;
-}
-
-if(verificar==true){
-	alert("se ha enviado el formulario");
-}
-*/
-/*
-
-function soloLetras(uno) {
-    key=uno.keyCode || uno.which;
-    teclado=String.fromCharCode(key).toLowerCase();
-    letras="abcdefghijklmnñopqrstuvwxyz";
-    especiales="8-37-38-46-164";
-    teclado_especial=false;
-
-    for(var i in especiales){
-    	if(key==especiales[i]){
-    		teclado_especial=true;break;
-    	}
-    }
-    if(letras.indexOf(teclado)==-1 && !teclado_especial){
-    	return false;
-    }
-}
-*/
-
- function validateForm(){
-  var name = document.getElementSById('name').value;
-  var lastname = document.forms[0]["name"].value;
+//NOMBRE
+function validateForm(){
+  var name = document.forms[0]["name"].value;
+  var lastname = document.forms[0]["lastname"].value;
   var email = document.forms[0]["input-email"].value;
   var password = document.forms[0]["input-password"].value;
+  var seleccion = querySelector('select').selectedIndex;
   var twitter = document.forms[0]["input-social"].value;
-  var combobox = document.getElementsByTagName('select')[0].value;
 
-   if (name == null || name == "") {
-       alert("Nombre valido");
+//comprobar que el campo este completo
+   if (name == null || name.length == 0 || /^\s+$/.test(name)) {
+       alert("nombre o apellido son campo obligatorio");
        return false;
    }
-    if (!validateEmail(email)) {
-      alert("Invalido");
-      return false;
-    }
+//comprobar que solo sean letras
+  else if(/^[a-zA-Z]+$/.test(name) == false){
+  alert("nombre no valido ingresar solo letras")
+  return true;
+  }
+//comprobar que el primer caracter es mayuscula
+  else if(name.charAt(0).toUpperCase() !== name.charAt(0)){
+  alert("la primera letra de nombre y apellido tiene que ser mayuscula")
+  return false;
+  }
+
+  //APELLIDO
+  //comprobar que el campo este completo
+   if (lastname == null || lastname.length == 0 || /^\s+$/.test(lastname)) {
+       alert("nombre es un campo obligatorio");
+       return false;
+   }
+//comprobar que solo sean letras
+  else if(/^[a-zA-Z]+$/.test(lastname) == false){
+  alert("apellido no valido ingresar solo letras")
+  return true;
+  }
+//comprobar que el primer caracter es mayuscula
+  else if(lastname.charAt(0).toUpperCase() !== lastname.charAt(0)){
+  alert("la primera letra de nombre y apellido tiene que ser mayuscula")
+  return false;
+  }
+
+//CORREO ELECTRONICO
+  if (/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email) == false){
+        alert("La dirección de email es incorrecta.");
+     }
+
+//CONTRASEÑA
+  if (password == null || password.length == 0) {
+       alert("contraseña campo obligatorio");
+       return false;
+   }
+   else if(password == "password" || password == 123456 || password == 098754){
+    alert("campo incorrecto");
+    return false;
+   }
+   else if(password.length < 6){
+    alert("tu contraseña debe ser mayor a 6 caracteres");
+   }
+  //SELECCION 
+
+if( seleccion == null || seleccion == 0 ) {
+  alert("por favor ingrese su bici");
+  return false;
+}
 
 }
-function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
+
 
