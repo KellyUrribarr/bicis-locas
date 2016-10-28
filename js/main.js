@@ -7,7 +7,7 @@ function validateForm(){
   var lastname = document.forms[0]["lastname"].value;
   var email = document.forms[0]["input-email"].value;
   var password = document.forms[0]["input-password"].value;
-  var seleccion = querySelector('select').selectedIndex;
+  var seleccion = document.querySelector('select').selectedIndex;
   var twitter = document.forms[0]["input-social"].value;
 
 //comprobar que el campo este completo
@@ -17,12 +17,12 @@ function validateForm(){
    }
 //comprobar que solo sean letras
   else if(/^[a-zA-Z]+$/.test(name) == false){
-  alert("nombre no valido ingresar solo letras")
+  alert("nombre no valido ingresar solo letras");
   return true;
   }
 //comprobar que el primer caracter es mayuscula
   else if(name.charAt(0).toUpperCase() !== name.charAt(0)){
-  alert("la primera letra de nombre y apellido tiene que ser mayuscula")
+  alert("la primera letra de nombre y apellido tiene que ser mayuscula");
   return false;
   }
 
@@ -34,12 +34,12 @@ function validateForm(){
    }
 //comprobar que solo sean letras
   else if(/^[a-zA-Z]+$/.test(lastname) == false){
-  alert("apellido no valido ingresar solo letras")
+  alert("apellido no valido ingresar solo letras");
   return true;
   }
 //comprobar que el primer caracter es mayuscula
   else if(lastname.charAt(0).toUpperCase() !== lastname.charAt(0)){
-  alert("la primera letra de nombre y apellido tiene que ser mayuscula")
+  alert("la primera letra de nombre y apellido tiene que ser mayuscula");
   return false;
   }
 
