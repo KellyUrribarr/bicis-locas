@@ -65,12 +65,5 @@ function validateForm(){
   else if (twitter == null || twitter.length == 0 || /^\s+$/.test(twitter)) {
     alert("twitter es un campo obligatorio");
     return false;
+    }
 }
-//CHECKBOX
-}
-
-
-
-
-
-    
